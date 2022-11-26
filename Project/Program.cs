@@ -1,7 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 class Program
 {
     static PersonList personList;
+    static UserList userList;
     private static void Main(string[] args)
     {
         PreparePersonListProgramIsLoad();
@@ -40,7 +45,7 @@ class Program
         Console.WriteLine("                             Menu                            ");
         Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
         Console.WriteLine("1. Registeration");
-        Console.WriteLine("2. Show member.");
+        Console.WriteLine("2. Show My Info.");
         Console.WriteLine("3. Log out.");
         Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
         Console.Write("Please input Menu (1-3) : ");
@@ -51,7 +56,7 @@ class Program
                 InputRegisterationScreen();
                 break;
             case Menu2.ShowAllMember:
-                ShowAllMemberParticipating();
+                ShowMemberInfo();
                 break;
             case Menu2.Logout:
                 PrintMenuScreen();
@@ -66,7 +71,7 @@ class Program
         Console.WriteLine("                             Menu                            ");
         Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
         Console.WriteLine("1. Registeration");
-        Console.WriteLine("2. Show member.");
+        Console.WriteLine("2. Show My Info.");
         Console.WriteLine("3. Login.");
         Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
         Console.Write("Please input Menu (1-3) : ");
@@ -77,10 +82,36 @@ class Program
                 InputRegisterationScreen();
                 break;
             case Menu3.ShowAllMember:
-                ShowAllMemberParticipating();
+                ShowMemberGuestInfo();
                 break;
             case Menu3.GoLogin:
                 BackToLoginScreen();
+                break;
+        default:
+            break;
+        }
+    }
+
+    static void PrintListMenuWhenGuestWantToLogin(){
+        Console.Clear();
+        Console.WriteLine("                             Menu                            ");
+        Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+        Console.WriteLine("1. Registeration");
+        Console.WriteLine("2. Login.");
+        Console.WriteLine("3. Back.");
+        Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+        Console.Write("Please input Menu (1-3) : ");
+        Menu4 menu4 = (Menu4)int.Parse(Console.ReadLine());
+        Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+        switch (menu4) {
+            case Menu4.Registeration:
+                InputRegisterationScreen();
+                break;
+            case Menu4.GoLogin:
+                BackToLoginScreen();
+                break;
+            case Menu4.PreviousPage:
+                ShowMemberGuestInfo();
                 break;
         default:
             break;
@@ -92,44 +123,95 @@ class Program
         Console.WriteLine("      Register      ");
         Console.WriteLine("********************");
         Console.Clear();
-        User newUser = new User(InputUsername(),
-                                  CheckNamePrefix(InputNamePrefix()),
+        Person newPerson = new Person(CheckNamePrefix(InputNamePrefix()),
                                   InputName(),
                                   InputSurname(),
                                   InputAge(),
-                                  CheckCountry((InputCountry())));
-        Program.personList.AddNewPerson(newUser);
+                                  CheckCountry(InputCountry()));
+        Program.personList.AddNewPerson(newPerson);
+
+        InputUsername_Email_Password();
+
         Console.WriteLine("********************");
 
         BackToMainMenu();
 
     }
-    /*
-    static void CheckName(){
-        PersonList inventory = new PersonList(personList);
-        Person checkperson = new Person(InputNamePrefix(),InputName(),InputSurname(),"","","","","");
-        Person searchName = inventory.SearchName(checkperson);
-    }
-    */
+
     static void PreparePersonListProgramIsLoad() {
         Program.personList = new PersonList();
+        Program.userList = new UserList();
     }
 
-    static void ShowAllMemberParticipating() {
-        Console.WriteLine("Show all Members participating");
+    static void ShowMemberInfo() {
+        Console.WriteLine("Show Member Info");
         Console.WriteLine("***************************************");
 
-        Program.personList.List();
+        Program.userList.UList();
+        Program.personList.PList();
 
         Console.Write("Press enter to continue. : ");
         Console.ReadLine();
         BackToMenuWhenLogin();
     }
 
+    static void ShowMemberGuestInfo() {
+        Console.Clear();
+        Console.WriteLine("***************************************");
+        Console.WriteLine("             Please Login              ");
+        Console.WriteLine("***************************************");
+        Console.WriteLine("1. Go to Login?");
+        Console.WriteLine("2. Back");
+        Console.Write("Please input Menu (1-2) : ");
+        GuestInfo guestWantToLogin = (GuestInfo)int.Parse(Console.ReadLine());
+        Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+        switch (guestWantToLogin) {
+            case GuestInfo.GuestWantToLogin:
+                InputRegisterationScreen();
+                break;
+            case GuestInfo.GuestInfoPreviousPage:
+                PrintListMenuWhenGuestLogin();
+                break;
+        default:
+            break;
+        }
+    }
 
-    static string InputUsername() {
-        Console.Write("Username : ");
-        return Console.ReadLine();
+    public static void InputUsername_Email_Password() {
+        Console.Clear();
+        if (userList.CheckValue() == 0) { //เช็ค จำนวนmember
+            User newUser = new User(InputUsername(),
+                                    InputPassword());
+            Program.userList.AddNewUser(newUser);
+        } else { //ถ้าไม่มีแอด newUser ใหม่
+            int a = 0;
+            do {
+                User newUser = new User(InputUsername(),
+                                        InputPassword());
+                if (userList.Loging_in(newUser) == false) { 
+                    Program.userList.AddNewUser(newUser);
+                    a = 1;
+                    Console.Clear();
+                } else {
+                    Console.WriteLine("Invalid Email. Pleae try again.!!");
+                }
+            } while (a != 1);
+        }
+        Console.Clear();
+    }
+
+    public static void InputUsername_Password() {
+        int a = 0;
+        do {
+            User newUser = new User(InputUsername(),
+                                    InputPassword());
+            if (userList.Loging_in(newUser) == false) { 
+                Console.WriteLine("Username or password does not match.");
+                Console.Clear();
+            } else {
+                break;
+            }
+        } while (a != 1);
     }
 
     static string InputNamePrefix() {
@@ -173,9 +255,11 @@ class Program
         return null;
     }
     */
-    static string InputEmail() {
-            Console.Write("Email : ");
-            return Console.ReadLine();
+
+    static string InputUsername() {
+        Console.WriteLine("Input Username & Password");
+        Console.Write("Username : ");
+        return Console.ReadLine();
     }
 
     static string InputPassword() {
@@ -221,44 +305,13 @@ class Program
         Console.Clear();
         Console.WriteLine("   Log-in   ");
         Console.WriteLine("************");
-        Login login = new Login(CheckLoginEmail(InputLoginEmail()),
-                                InputLoginPassword());
+
+        InputUsername_Password();
+
         Console.Clear();
         PrintListMenuWhenLogin();
     }
 
-    static string InputLoginEmail() {
-        Console.Write("Email : ");
-        return Console.ReadLine();
-    }
-
-    static string InputLoginPassword() {
-        Console.Write("Password : ");
-        return Console.ReadLine();
-    }
-    static string CheckLoginEmail(string loginEmail/*,string email*/){
-        if ((loginEmail == "exit")) {
-            Console.Clear();
-            BackToMainMenu();
-        }
-        /*
-        else if (loginEmail != email) {
-            Console.WriteLine("Incorrect email or password. Please try again.");
-            BackToLoginScreen();
-        }
-        */
-        return null;
-    }
-
-    /*
-    static string CheckLoginPassword(string loginPassword){
-        if ((loginPassword != this.password)) {
-            Console.WriteLine("Incorrect email or password. Please try again.");
-            BackToLoginScreen();
-        }
-        return null;
-    } */
-    
     static void BackToLoginScreen() {
         Console.Clear();
         ShowLoginScreen();

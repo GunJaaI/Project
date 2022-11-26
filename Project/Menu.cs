@@ -15,3 +15,12 @@ public enum Menu3 {
     ShowAllMember,
     GoLogin
 }
+public enum Menu4 {
+    Registeration = 1,
+    GoLogin,
+    PreviousPage
+}
+public enum GuestInfo {
+    GuestWantToLogin = 1,
+    GuestInfoPreviousPage
+}
