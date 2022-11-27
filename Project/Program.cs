@@ -9,7 +9,7 @@ class Program
     static UserList userList;
     private static void Main(string[] args)
     {
-        PreparePersonListProgramIsLoad();
+        PreparePersonAndUserListProgramIsLoad();
         PrintMenuScreen();
     }
     static void PrintMenuScreen(){
@@ -19,11 +19,11 @@ class Program
     static void PrintListMenu(){
         Console.WriteLine("                             Menu                            ");
         Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-        Console.WriteLine("1. Register");
-        Console.WriteLine("2. Login");
-        Console.WriteLine("3. Guest login");
+        Console.WriteLine(" (1) <<- Register.");
+        Console.WriteLine(" (2) <<- Login.");
+        Console.WriteLine(" (3) <<- Guest login.");
         Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-        Console.Write("Please input Menu (1-3) : ");
+        Console.Write("Choose number (1-3) : ");
         Menu menu = (Menu)int.Parse(Console.ReadLine());
         Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
         switch (menu) {
@@ -44,11 +44,11 @@ class Program
     static void PrintListMenuWhenLogin(){
         Console.WriteLine("                             Menu                            ");
         Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-        Console.WriteLine("1. Registeration");
-        Console.WriteLine("2. Show My Info.");
-        Console.WriteLine("3. Log out.");
+        Console.WriteLine(" (1) <<- Register.");
+        Console.WriteLine(" (2) <<- Show My Info.");
+        Console.WriteLine(" (3) <<- Log out.");
         Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-        Console.Write("Please input Menu (1-3) : ");
+        Console.Write("Choose number (1-3) : ");
         Menu2 menu2 = (Menu2)int.Parse(Console.ReadLine());
         Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
         switch (menu2) {
@@ -70,17 +70,13 @@ class Program
         Console.Clear();
         Console.WriteLine("                             Menu                            ");
         Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-        Console.WriteLine("1. Registeration");
-        Console.WriteLine("2. Show My Info.");
-        Console.WriteLine("3. Login.");
+        Console.WriteLine(" (1) <<- Show My Info.");
+        Console.WriteLine(" (2) <<- Login.");
         Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-        Console.Write("Please input Menu (1-3) : ");
+        Console.Write("Choose number (1-2) : ");
         Menu3 menu3 = (Menu3)int.Parse(Console.ReadLine());
         Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
         switch (menu3) {
-            case Menu3.Registeration:
-                InputRegisterationScreen();
-                break;
             case Menu3.ShowAllMember:
                 ShowMemberGuestInfo();
                 break;
@@ -96,11 +92,11 @@ class Program
         Console.Clear();
         Console.WriteLine("                             Menu                            ");
         Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-        Console.WriteLine("1. Registeration");
-        Console.WriteLine("2. Login.");
-        Console.WriteLine("3. Back.");
+        Console.WriteLine(" (1) <<- Register.");
+        Console.WriteLine(" (2) <<- Login.");
+        Console.WriteLine(" (3) <<- Back.");
         Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-        Console.Write("Please input Menu (1-3) : ");
+        Console.Write("Choose number (1-3) : ");
         Menu4 menu4 = (Menu4)int.Parse(Console.ReadLine());
         Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
         switch (menu4) {
@@ -138,7 +134,7 @@ class Program
 
     }
 
-    static void PreparePersonListProgramIsLoad() {
+    static void PreparePersonAndUserListProgramIsLoad() {
         Program.personList = new PersonList();
         Program.userList = new UserList();
     }
@@ -160,12 +156,16 @@ class Program
         Console.WriteLine("***************************************");
         Console.WriteLine("             Please Login              ");
         Console.WriteLine("***************************************");
-        Console.WriteLine("1. Go to Login?");
-        Console.WriteLine("2. Back");
-        Console.Write("Please input Menu (1-2) : ");
+        Console.WriteLine(" (1) <<- Register.");
+        Console.WriteLine(" (2) <<- Login.");
+        Console.WriteLine(" (3) <<- Back.");
+        Console.Write("Choose number (1-2) : ");
         GuestInfo guestWantToLogin = (GuestInfo)int.Parse(Console.ReadLine());
         Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
         switch (guestWantToLogin) {
+            case GuestInfo.GuestWantToRegister:
+                ShowLoginScreen();
+                break;
             case GuestInfo.GuestWantToLogin:
                 InputRegisterationScreen();
                 break;
@@ -303,9 +303,8 @@ class Program
 
     static void ShowLoginScreen() {
         Console.Clear();
-        Console.WriteLine("   Log-in   ");
-        Console.WriteLine("************");
-
+        Console.WriteLine("               Log-in               ");
+        Console.WriteLine("************************************");
         InputUsername_Password();
 
         Console.Clear();

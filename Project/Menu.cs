@@ -11,8 +11,7 @@ public enum Menu2 {
     Logout
 }
 public enum Menu3 {
-    Registeration = 1,
-    ShowAllMember,
+    ShowAllMember = 1,
     GoLogin
 }
 public enum Menu4 {
@@ -21,6 +20,7 @@ public enum Menu4 {
     PreviousPage
 }
 public enum GuestInfo {
-    GuestWantToLogin = 1,
+    GuestWantToRegister = 1,
+    GuestWantToLogin,
     GuestInfoPreviousPage
 }
