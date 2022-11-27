@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-class Program
+public class Program
 {
     static PersonList personList;
     static UserList userList;
@@ -41,12 +41,13 @@ class Program
         }
     }
 
-    static void PrintListMenuWhenLogin(){
+    public static void PrintListMenuWhenLogin(){
         Console.WriteLine("                             Menu                            ");
         Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
         Console.WriteLine(" (1) <<- Register.");
         Console.WriteLine(" (2) <<- Show My Info.");
-        Console.WriteLine(" (3) <<- Log out.");
+        Console.WriteLine(" (3) <<- Calendar.");
+        Console.WriteLine(" (4) <<- Log out.");
         Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
         Console.Write("Choose number (1-3) : ");
         Menu2 menu2 = (Menu2)int.Parse(Console.ReadLine());
@@ -57,6 +58,9 @@ class Program
                 break;
             case Menu2.ShowAllMember:
                 ShowMemberInfo();
+                break;
+            case Menu2.ShowCalendar:
+                Calendar.InfoCalendar();
                 break;
             case Menu2.Logout:
                 PrintMenuScreen();
@@ -71,14 +75,18 @@ class Program
         Console.WriteLine("                             Menu                            ");
         Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
         Console.WriteLine(" (1) <<- Show My Info.");
-        Console.WriteLine(" (2) <<- Login.");
+        Console.WriteLine(" (2) <<- Calendar.");
+        Console.WriteLine(" (3) <<- Login.");
         Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-        Console.Write("Choose number (1-2) : ");
+        Console.Write("Choose number (1-3) : ");
         Menu3 menu3 = (Menu3)int.Parse(Console.ReadLine());
         Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
         switch (menu3) {
             case Menu3.ShowAllMember:
                 ShowMemberGuestInfo();
+                break;
+            case Menu3.ShowCalendar:
+                Calendar.InfoCalendar();
                 break;
             case Menu3.GoLogin:
                 BackToLoginScreen();
@@ -207,6 +215,8 @@ class Program
                                     InputPassword());
             if (userList.Loging_in(newUser) == false) { 
                 Console.WriteLine("Username or password does not match.");
+                Console.WriteLine("Please enter to continue.");
+                Console.ReadLine();
                 Console.Clear();
             } else {
                 break;
