@@ -22,6 +22,26 @@ public enum Menu4 {
     PreviousPage
 }
 public enum Calendarnum {
+    Calendar2022 = 1,
+    Calendar2023,
+    PreviousPage
+}
+public enum Calendarnum2022 {
+    January = 1,
+    February,
+    March,
+    April,
+    May,
+    June,
+    July,
+    August,
+    September,
+    October,
+    November,
+    December,
+    PreviousPage
+}
+public enum Calendarnum2023 {
     January = 1,
     February,
     March,
