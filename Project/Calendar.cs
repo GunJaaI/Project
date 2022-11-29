@@ -31,6 +31,34 @@ public class Calendar
             break;
         }
     }
+
+    public static void InfoCalendarForGuest() {
+        Console.Clear();
+        Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+        Console.WriteLine("                                                Calendar                                               ");
+        Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+        Console.WriteLine(" (1) <<- Calendar Year 2022");
+        Console.WriteLine(" (2) <<- Calendar Year 2023");
+        Console.WriteLine(" (3) <<- Back.");
+        Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+        Console.Write("Choose number (1-3) : ");
+        Calendarnumforguest calendarnumforguest = (Calendarnumforguest)int.Parse(Console.ReadLine());
+        Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+        switch (calendarnumforguest) {
+            case Calendarnumforguest.Calendar2022:
+                InfoCalendar2022ForGuest();
+                break;
+            case Calendarnumforguest.Calendar2023:
+                InfoCalendar2023ForGuest();
+                break;
+            case Calendarnumforguest.PreviousPage:
+                BackToPrintListMenuWhenGuestLogin();
+                break;
+        default:
+            break;
+        }
+    }
+
     public static void InfoCalendar2022() {
         Console.Clear();
         Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
@@ -147,14 +175,140 @@ public class Calendar
         }
     }
 
+    public static void InfoCalendar2022ForGuest() {
+        Console.Clear();
+        Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+        Console.WriteLine("                                              Calendar 2022                                            ");
+        Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+        Console.WriteLine("|      01 January         |       02 February       |      03 March          |      04 April          |");
+        Console.WriteLine("|      05 May             |       06 June           |      07 July           |      08 August         |");
+        Console.WriteLine("|      09 September       |       10 October        |      11 November       |      12 December       |");
+        Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+        Console.WriteLine(" (13) <<- Back.");
+        Console.Write("Choose number (1-13) : ");
+        Calendarnum2022 calendarnum2022 = (Calendarnum2022)int.Parse(Console.ReadLine());
+        Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+        switch (calendarnum2022) {
+            case Calendarnum2022.January:
+                ShowInfoCalendar1_2022();
+                break;
+            case Calendarnum2022.February:
+                ShowInfoCalendar2_2022();
+                break;
+            case Calendarnum2022.March:
+                ShowInfoCalendar3_2022();
+                break;
+            case Calendarnum2022.April:
+                ShowInfoCalendar4_2022();
+                break;
+            case Calendarnum2022.May:
+                ShowInfoCalendar5_2022();
+                break;
+            case Calendarnum2022.June:
+                ShowInfoCalendar6_2022();
+                break;
+            case Calendarnum2022.July:
+                ShowInfoCalendar7_2022();
+                break;
+            case Calendarnum2022.August:
+                ShowInfoCalendar8_2022();
+                break;
+            case Calendarnum2022.September:
+                ShowInfoCalendar9_2022();
+                break;
+            case Calendarnum2022.October:
+                ShowInfoCalendar10_2022();
+                break;
+            case Calendarnum2022.November:
+                ShowInfoCalendar11_2022();
+                break;
+            case Calendarnum2022.December:
+                ShowInfoCalendar12_2022();
+                break;
+            case Calendarnum2022.PreviousPage:
+                BackToInfoCalendarForGuest();
+                break;
+        default:
+            break;
+        }
+    }
+
+    public static void InfoCalendar2023ForGuest() {
+        Console.Clear();
+        Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+        Console.WriteLine("                                              Calendar 2023                                            ");
+        Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+        Console.WriteLine("|      01 January         |       02 February       |      03 March          |      04 April          |");
+        Console.WriteLine("|      05 May             |       06 June           |      07 July           |      08 August         |");
+        Console.WriteLine("|      09 September       |       10 October        |      11 November       |      12 December       |");
+        Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+        Console.WriteLine(" (13) <<- Back.");
+        Console.Write("Choose number (1-13) : ");
+        Calendarnum2023 calendarnum2023 = (Calendarnum2023)int.Parse(Console.ReadLine());
+        Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+        switch (calendarnum2023) {
+            case Calendarnum2023.January:
+                ShowInfoCalendar1_2023();
+                break;
+            case Calendarnum2023.February:
+                ShowInfoCalendar2_2023();
+                break;
+            case Calendarnum2023.March:
+                ShowInfoCalendar3_2023();
+                break;
+            case Calendarnum2023.April:
+                ShowInfoCalendar4_2023();
+                break;
+            case Calendarnum2023.May:
+                ShowInfoCalendar5_2023();
+                break;
+            case Calendarnum2023.June:
+                ShowInfoCalendar6_2023();
+                break;
+            case Calendarnum2023.July:
+                ShowInfoCalendar7_2023();
+                break;
+            case Calendarnum2023.August:
+                ShowInfoCalendar8_2023();
+                break;
+            case Calendarnum2023.September:
+                ShowInfoCalendar9_2023();
+                break;
+            case Calendarnum2023.October:
+                ShowInfoCalendar10_2023();
+                break;
+            case Calendarnum2023.November:
+                ShowInfoCalendar11_2023();
+                break;
+            case Calendarnum2023.December:
+                ShowInfoCalendar12_2023();
+                break;
+            case Calendarnum2023.PreviousPage:
+                BackToInfoCalendarForGuest();
+                break;
+        default:
+            break;
+        }
+    }
+
     static void BackToPrintListMenuWhenLogin() {
         Console.Clear();
         Program.PrintListMenuWhenLogin();
     }
 
+    static void BackToPrintListMenuWhenGuestLogin() {
+        Console.Clear();
+        Program.PrintListMenuWhenGuestLogin();
+    }
+
     static void BackToInfoCalendar() {
         Console.Clear();
         InfoCalendar();
+    }
+
+    static void BackToInfoCalendarForGuest() {
+        Console.Clear();
+        InfoCalendarForGuest();
     }
 
     static void BackToInfoCalendar2022() {

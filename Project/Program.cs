@@ -70,7 +70,7 @@ public class Program
         }
     }
 
-    static void PrintListMenuWhenGuestLogin(){
+    public static void PrintListMenuWhenGuestLogin(){
         Console.Clear();
         Console.WriteLine("                             Menu                            ");
         Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
@@ -86,10 +86,10 @@ public class Program
                 ShowMemberGuestInfo();
                 break;
             case Menu3.ShowCalendar:
-                Calendar.InfoCalendar();
+                Calendar.InfoCalendarForGuest();
                 break;
             case Menu3.GoLogin:
-                BackToLoginScreen();
+                PrintListMenuWhenGuestWantToLogin();
                 break;
         default:
             break;
@@ -167,7 +167,7 @@ public class Program
         Console.WriteLine(" (1) <<- Register.");
         Console.WriteLine(" (2) <<- Login.");
         Console.WriteLine(" (3) <<- Back.");
-        Console.Write("Choose number (1-2) : ");
+        Console.Write("Choose number (1-3) : ");
         GuestInfo guestWantToLogin = (GuestInfo)int.Parse(Console.ReadLine());
         Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
         switch (guestWantToLogin) {

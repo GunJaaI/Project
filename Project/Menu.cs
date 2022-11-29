@@ -26,6 +26,11 @@ public enum Calendarnum {
     Calendar2023,
     PreviousPage
 }
+public enum Calendarnumforguest {
+    Calendar2022 = 1,
+    Calendar2023,
+    PreviousPage
+}
 public enum Calendarnum2022 {
     January = 1,
     February,
