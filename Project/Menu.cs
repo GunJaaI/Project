@@ -13,7 +13,8 @@ public enum Menu2 {
 public enum Menu3 {
     ShowAllMember = 1,
     ShowCalendar,
-    GoLogin
+    GoLogin,
+    PreviousPage
 }
 public enum Menu4 {
     Registeration = 1,

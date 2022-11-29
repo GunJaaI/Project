@@ -73,8 +73,9 @@ public class Program
         Console.WriteLine(" (1) <<- Show My Info.");
         Console.WriteLine(" (2) <<- Calendar.");
         Console.WriteLine(" (3) <<- Login.");
+        Console.WriteLine(" (4) <<- Back to menu.");
         Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-        Console.Write("Choose number (1-3) : ");
+        Console.Write("Choose number (1-4) : ");
         Menu3 menu3 = (Menu3)int.Parse(Console.ReadLine());
         Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
         switch (menu3) {
@@ -86,6 +87,9 @@ public class Program
                 break;
             case Menu3.GoLogin:
                 PrintListMenuWhenGuestWantToLogin();
+                break;
+            case Menu3.PreviousPage:
+                BackToMainMenu();
                 break;
         default:
             break;
