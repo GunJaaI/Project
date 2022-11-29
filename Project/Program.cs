@@ -159,7 +159,7 @@ public class Program
         BackToMenuWhenLogin();
     }
 
-    static void ShowMemberGuestInfo() {
+    static void ShowMemberGuestInfo() { 
         Console.Clear();
         Console.WriteLine("***************************************");
         Console.WriteLine("             Please Login              ");
@@ -248,23 +248,6 @@ public class Program
         Console.Write("Country ( (1)Thailand <-- Only ) : ");
         return Console.ReadLine();
     }
-     /*
-    static string InputAdmin() {
-        Console.Write("Admin? (y/n) : ");
-        string checkadmin = Console.ReadLine();
-        if((checkadmin == "Yes")||(checkadmin == "yes")||(checkadmin == "Y")||(checkadmin == "y")) {
-            CheckEmail(InputEmail());
-            InputPassword();
-        } else if((checkadmin == "No")||(checkadmin == "no")||(checkadmin == "N")||(checkadmin == "n")) {
-            return null;
-        } else {
-            Console.WriteLine("Please input again");
-            Console.ReadLine();
-            return InputAdmin();
-        }
-        return null;
-    }
-    */
 
     static string InputUsername() {
         Console.WriteLine("Input Username & Password");
@@ -295,15 +278,6 @@ public class Program
             Console.WriteLine("Please input your Country");
             return CheckCountry(InputCountry());
         }
-    }
-
-    static string CheckEmail(string email){
-        if ((email == "exit")) {
-            Console.Write("Invalid email. Please try again.");
-            Console.ReadLine();
-            BackToMainMenu();
-        }
-        return email;
     }
 
     static void BackToMainMenu() {
