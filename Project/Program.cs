@@ -44,19 +44,15 @@ public class Program
     public static void PrintListMenuWhenLogin(){
         Console.WriteLine("                             Menu                            ");
         Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-        Console.WriteLine(" (1) <<- Register.");
-        Console.WriteLine(" (2) <<- Show My Info.");
-        Console.WriteLine(" (3) <<- Calendar.");
-        Console.WriteLine(" (4) <<- Log out.");
+        Console.WriteLine(" (1) <<- Show My Info.");
+        Console.WriteLine(" (2) <<- Calendar.");
+        Console.WriteLine(" (3) <<- Log out.");
         Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
         Console.Write("Choose number (1-3) : ");
         Menu2 menu2 = (Menu2)int.Parse(Console.ReadLine());
         Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
         switch (menu2) {
-            case Menu2.Registeration:
-                InputRegisterationScreen();
-                break;
-            case Menu2.ShowAllMember:
+            case Menu2.ShowMember:
                 ShowMemberInfo();
                 break;
             case Menu2.ShowCalendar:

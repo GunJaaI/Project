@@ -6,8 +6,7 @@ public enum Menu {
     Guest
 }
 public enum Menu2 {
-    Registeration = 1,
-    ShowAllMember,
+    ShowMember = 1,
     ShowCalendar,
     Logout
 }
