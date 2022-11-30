@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 public class Program
 {
-    static PersonList personList;
-    static UserList userList;
+    private static PersonList personList;
+    private static UserList userList;
     private static void Main(string[] args)
     {
         PreparePersonAndUserListProgramIsLoad();
