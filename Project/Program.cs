@@ -115,7 +115,7 @@ public class Program
                 BackToLoginScreen();
                 break;
             case Menu4.PreviousPage:
-                ShowMemberGuestInfo();
+                PrintListMenuWhenGuestLogin();
                 break;
         default:
             break;
