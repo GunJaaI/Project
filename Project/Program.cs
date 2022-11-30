@@ -172,10 +172,10 @@ public class Program
         Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
         switch (guestWantToLogin) {
             case GuestInfo.GuestWantToRegister:
-                ShowLoginScreen();
+                InputRegisterationScreen();
                 break;
             case GuestInfo.GuestWantToLogin:
-                InputRegisterationScreen();
+                ShowLoginScreen();
                 break;
             case GuestInfo.GuestInfoPreviousPage:
                 PrintListMenuWhenGuestLogin();
